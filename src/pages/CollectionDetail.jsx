@@ -1,22 +1,28 @@
 import { useParams, Link } from "react-router-dom";
-import products from "../data/products";
 
+import { useEffect, useState } from "react";
+import { getProducts } from "../services/productService";
+import { imageMap } from "../data/imageMap";
 function CollectionDetail() {
   const { id } = useParams();
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const collectionProducts = products.filter(
     (product) => product.collection === id,
   );
-  console.log("ID:", id);
-
-  console.log(
-    products.map((product) => ({
-      name: product.name,
-      collection: product.collection,
-    })),
-  );
-
-  console.log("Filtered:", collectionProducts);
 
   return (
     <section className="bg-[#F5EFE6] min-h-screen py-20">
@@ -33,12 +39,12 @@ function CollectionDetail() {
           {collectionProducts.map((product) => (
             <Link
               key={product.id}
-              to={`/product/${product.id}`}
+              to={`/product/${product.productCode}`}
               className="group"
             >
               <div className="overflow-hidden rounded-[24px]">
                 <img
-                  src={product.image}
+                  src={imageMap[product.images?.[0]?.trim()]}
                   alt={product.name}
                   className="
                     w-full

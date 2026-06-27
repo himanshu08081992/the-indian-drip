@@ -1,10 +1,27 @@
-import { useState } from "react";
-import products from "../data/products";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import { getProducts } from "../services/productService";
+import { imageMap } from "../data/imageMap";
+
 function Shop() {
+  
   const [search, setSearch] = useState("");
+  const [products, setProducts] = useState([]);
   const [selectedCollection, setSelectedCollection] = useState("all");
+
+  useEffect(() => {
+  const fetchProducts = async () => {
+    try {
+      const data = await getProducts();
+      setProducts(data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
+
+  fetchProducts();
+}, []);
 
   const filteredProducts = products.filter((product) => {
     const matchesSearch = product.name
@@ -55,7 +72,7 @@ mb-6
         {/* Filters */}
 
         <div className="flex gap-3 mb-6 overflow-x-auto pb-2 hide-scrollbar">
-          {["all", "roots", "peaks", "streets", "legacy"].map((item) => (
+          {["all", "essentials", "minimal", "statement", "together"].map((item) => (
             <button
               key={item}
               onClick={() => setSelectedCollection(item)}
@@ -92,12 +109,12 @@ mb-6
           {filteredProducts.map((product) => (
             <Link
               key={product.id}
-              to={`/product/${product.id}`}
+              to={`/product/${product.productCode}`}
               className="group"
             >
               <div className="overflow-hidden rounded-3xl">
                 <img
-                  src={product.image}
+                  src={imageMap[product.images?.[0]]}
                   alt={product.name}
                   className="
                     w-full

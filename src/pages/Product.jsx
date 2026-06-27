@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getProduct } from "../services/productService";
+import { imageMap } from "../data/imageMap";
+
 import { useParams } from "react-router-dom";
-import products from "../data/products";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 
@@ -9,11 +11,24 @@ function Product() {
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
-  const product = products.find((item) => item.id === Number(id));
+  const [product, setProduct] = useState(null);
 
   const [selectedSize, setSelectedSize] = useState("M");
   const [quantity, setQuantity] = useState(1);
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const data = await getProduct(id);
+        setProduct(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
+    fetchProduct();
+  }, [id]);
+
+  
   if (!product) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -30,7 +45,7 @@ function Product() {
 
           <div>
             <img
-              src={product.image}
+            src={imageMap[product.images?.[0]?.trim()]}
               alt={product.name}
               className="
                 w-full
@@ -46,7 +61,7 @@ function Product() {
 
           <div>
             <p className="uppercase tracking-[3px] text-[#7A0C0C]">
-              {product.category}
+             {product.collection}
             </p>
 
             <h1 className="text-3xl md:text-4xl font-semibold mt-4">
@@ -65,7 +80,7 @@ function Product() {
               <h3 className="font-semibold mb-4">Select Size</h3>
 
               <div className="flex gap-4 flex-wrap">
-                {["S", "M", "L", "XL"].map((size) => (
+                {product.sizes?.map((size) => (
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
