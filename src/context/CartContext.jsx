@@ -9,17 +9,30 @@ export const CartProvider = ({ children }) => {
     return savedCart ? JSON.parse(savedCart) : [];
   });
   const addToCart = (product, size, quantity) => {
+    const availableStock = product.stock?.[size] || 0;
+
+    if (availableStock <= 0) {
+      alert("This size is out of stock.");
+      return;
+    }
     setCart((prevCart) => {
       const existingItem = prevCart.find(
         (item) => item.id === product.id && item.size === size,
       );
 
       if (existingItem) {
+        const availableStock = product.stock?.[size] || 0;
+
+        const newQuantity = Math.min(
+          existingItem.quantity + quantity,
+          availableStock,
+        );
+
         return prevCart.map((item) =>
           item.id === product.id && item.size === size
             ? {
                 ...item,
-                quantity: item.quantity + quantity,
+                quantity: newQuantity,
               }
             : item,
         );
@@ -36,12 +49,44 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-    useEffect(() => {
-        localStorage.setItem("cart", JSON.stringify(cart));
-      }, [cart]);
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
   const removeFromCart = (productId, size) => {
     setCart((prevCart) =>
       prevCart.filter((item) => !(item.id === productId && item.size === size)),
+    );
+  };
+
+  const increaseQuantity = (productId, size) => {
+    setCart((prevCart) =>
+      prevCart.map((item) => {
+        if (item.id === productId && item.size === size) {
+          const maxStock = item.stock?.[size] || 0;
+
+          return {
+            ...item,
+            quantity: Math.min(item.quantity + 1, maxStock),
+          };
+        }
+
+        return item;
+      }),
+    );
+  };
+
+  const decreaseQuantity = (productId, size) => {
+    setCart((prevCart) =>
+      prevCart.map((item) => {
+        if (item.id === productId && item.size === size) {
+          return {
+            ...item,
+            quantity: Math.max(item.quantity - 1, 1),
+          };
+        }
+
+        return item;
+      }),
     );
   };
 
@@ -56,6 +101,8 @@ export const CartProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         clearCart,
+        increaseQuantity,
+        decreaseQuantity,
       }}
     >
       {children}

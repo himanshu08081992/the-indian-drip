@@ -7,11 +7,11 @@ import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+
     <AuthProvider>
       <CartProvider>
         <App />
       </CartProvider>
     </AuthProvider>
-  </StrictMode>
+ 
 );

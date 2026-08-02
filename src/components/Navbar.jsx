@@ -1,43 +1,54 @@
-import { Link } from "react-router-dom";
-import { useCart } from "../../context/CartContext";
+import { NavLink, Link } from "react-router-dom";
+import { useEffect, useState, useMemo } from "react";
+import { useCart } from "../context/CartContext";
 import { FiSearch, FiUser, FiShoppingBag, FiMenu } from "react-icons/fi";
-import { useState } from "react";
-import products from "../../data/products";
+import { getProducts } from "../services/productService";
+
 function Navbar() {
+  const navLinkClass = ({ isActive }) =>
+    `relative transition-all duration-300 hover:text-[#7A0C0C] hover:-translate-y-[2px]
+   after:absolute after:left-0 after:-bottom-1 after:h-[2px]
+   after:w-0 after:bg-[#7A0C0C] hover:after:w-full after:duration-300
+   ${isActive ? "text-[#7A0C0C] after:w-full" : ""}`;
+
   const { cart } = useCart();
 
   const [search, setSearch] = useState("");
 
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const [products, setProducts] = useState([]);
 
   const searchExpanded = isHovered || isFocused || search.length > 0;
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(search.toLowerCase()),
-  );
+    fetchProducts();
+  }, []);
+
+  const filteredProducts = useMemo(() => {
+    return products.filter((product) =>
+      product.name.toLowerCase().includes(search.toLowerCase()),
+    );
+  }, [products, search]);
 
   const [menuOpen, setMenuOpen] = useState(false);
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
   return (
     <nav
-      className="
-    sticky
-    top-0
-    z-50
-
-    px-20
-
-    bg-[#F5EFE6]/90
-    backdrop-blur-md
-
-    border-b
-    border-gray-200
-  "
+      // ref={navbarRef}
+      className=" sticky top-0 z-50 px-0 lg:px-8 xl:px-12 bg-[#F5EFE6]/70
+backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-500 border-b border-gray-200 "
     >
-      {" "}
-      <div className="max-w-8xl mx-auto px-3 lg:px-4">
-        <div className="grid grid-cols-[30%_40%_30%] items-center h-20">
+      <div className="max-w-[1500px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="flex items-center justify-between h-[88px]">
           {/* MOBILE MENU */}
 
           <div
@@ -49,118 +60,57 @@ function Navbar() {
 
           {/* LOGO */}
 
-          <div className="flex items-center">
-            <Link to="/" className="text-xl md:text-3xl">
+          <div
+            //  ref={logoRef}
+            className="flex items-center  flex-shrink-0"
+          >
+            <Link
+              to="/"
+              className="text-lg
+              leading-none
+select-none
+sm:text-xl
+md:text-2xl
+lg:text-[30px]  tracking-[0.15em] font-semibold shrink-0 whitespace-nowrap"
+            >
               THE <span className="text-[#7A0C0C] font-bold">इंडियन</span> DRIP
             </Link>
           </div>
 
-          {/* mobile ki cart  */}
-
           {/* DESKTOP MENU */}
 
-          <ul className="hidden lg:flex justify-center gap-10 font-medium">
+          <ul className="hidden lg:flex justify-center gap-8 lg:gap-12 text-[14px] tracking-[0.18em] uppercase">
             <li>
-              <Link
-                to="/shop"
-                className="
-    relative
-
-    after:absolute
-    after:left-0
-    after:-bottom-1
-
-    after:h-[2px]
-    after:w-0
-
-    after:bg-[#7A0C0C]
-
-    hover:after:w-full
-
-    after:duration-300
-  "
-              >
+              <NavLink to="/shop" className={navLinkClass}>
                 SHOP
-              </Link>
+              </NavLink>
             </li>
 
             <li>
-              <Link
-                className="
-               relative
-
-    after:absolute
-    after:left-0
-    after:-bottom-1
-
-    after:h-[2px]
-    after:w-0
-
-    after:bg-[#7A0C0C]
-
-    hover:after:w-full
-
-    after:duration-300
-              "
-                to="collections"
-              >
+              <NavLink to="/collections" className={navLinkClass}>
                 COLLECTIONS
-              </Link>
+              </NavLink>
             </li>
 
             <li>
-              <Link
-                className="
-               relative
-
-    after:absolute
-    after:left-0
-    after:-bottom-1
-
-    after:h-[2px]
-    after:w-0
-
-    after:bg-[#7A0C0C]
-
-    hover:after:w-full
-
-    after:duration-300
-              "
-                to="/OurStory"
-              >
+              <NavLink to="/ourstory" className={navLinkClass}>
                 OUR STORY
-              </Link>
+              </NavLink>
             </li>
 
             <li>
-              <Link
-                className="
-               relative
-
-    after:absolute
-    after:left-0
-    after:-bottom-1
-
-    after:h-[2px]
-    after:w-0
-
-    after:bg-[#7A0C0C]
-
-    hover:after:w-full
-
-    after:duration-300
-              "
-                to="/contact"
-              >
+              <NavLink to="/contact" className={navLinkClass}>
                 CONTACT
-              </Link>
+              </NavLink>
             </li>
           </ul>
 
           {/* ICONS */}
 
-          <div className="hidden lg:flex justify-end items-center gap-5 text-xl">
-            {" "}
+          <div
+            // ref={iconsRef}
+            className="hidden lg:flex justify-end items-center gap-5 text-xl"
+          >
             {/* SEARCH */}
             <div
               className="relative"
@@ -178,14 +128,14 @@ function Navbar() {
         overflow-hidden
 
         rounded-full
-
+        hover:shadow-lg
         transition-all
         duration-500
         ease-in-out
 
         ${
           searchExpanded
-            ? "w-[260px] bg-white border border-gray-300 px-4 py-2 shadow-sm"
+            ? "lg:w-[260px] xl:w-[300px] bg-white border border-gray-300 px-4 py-2 shadow-sm"
             : "w-10 h-10 justify-center"
         }
  
@@ -249,7 +199,7 @@ function Navbar() {
                     filteredProducts.map((product) => (
                       <Link
                         key={product.id}
-                        to={`/product/${product.id}`}
+                        to={`/product/${product.productCode}`}
                         onClick={() => {
                           setSearch("");
                           setIsHovered(false);
@@ -264,7 +214,9 @@ function Navbar() {
   "
                       >
                         <img
-                          src={product.image}
+                          src={
+                            product.images?.[0] || "/placeholder-product.png"
+                          }
                           alt={product.name}
                           className="
               w-12
@@ -295,16 +247,13 @@ function Navbar() {
               {/* FUTURE SEARCH RESULTS DROPDOWN */}
             </div>
             {/* USER */}
-            <button className="hover:text-[#7A0C0C] duration-300">
+            <button className="hover:text-[#7A0C0C] hover:scale-110 transition-all duration-300">
               <FiUser />
             </button>
             {/* CART */}
             <Link
               to="/cart"
-              className="
-      relative
-      hover:text-[#7A0C0C]
-      duration-300
+              className="relative  hover:text-[#7A0C0C] hover:scale-110 transition-all duration-300
     "
             >
               <FiShoppingBag />
@@ -352,6 +301,9 @@ function Navbar() {
           -right-2
 
           bg-[#7A0C0C]
+          shadow-lg
+ring-2
+ring-[#F5EFE6]
           text-white
 
           text-[10px]
@@ -379,7 +331,10 @@ function Navbar() {
           className="
       lg:hidden
 
-      bg-[#F5EFE6]
+     bg-[#F5EFE6]/95
+     animate-in
+fade-in
+backdrop-blur-xl
 
       border-t
       border-gray-200
@@ -431,7 +386,7 @@ function Navbar() {
                   filteredProducts.map((product) => (
                     <Link
                       key={product.id}
-                      to={`/product/${product.id}`}
+                      to={`/product/${product.productCode}`}
                       onClick={() => setMenuOpen(false)}
                       className="
                   flex
@@ -445,7 +400,7 @@ function Navbar() {
                 "
                     >
                       <img
-                        src={product.image}
+                        src={product.images?.[0] || "/placeholder-product.png"}
                         alt={product.name}
                         className="
                     w-12

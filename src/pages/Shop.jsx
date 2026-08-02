@@ -1,27 +1,24 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import { getProducts } from "../services/productService";
-import { imageMap } from "../data/imageMap";
 
 function Shop() {
-  
   const [search, setSearch] = useState("");
   const [products, setProducts] = useState([]);
   const [selectedCollection, setSelectedCollection] = useState("all");
 
   useEffect(() => {
-  const fetchProducts = async () => {
-    try {
-      const data = await getProducts();
-      setProducts(data);
-    } catch (error) {
-      console.error("Error fetching products:", error);
-    }
-  };
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
 
-  fetchProducts();
-}, []);
+    fetchProducts();
+  }, []);
 
   const filteredProducts = products.filter((product) => {
     const matchesSearch = product.name
@@ -48,7 +45,7 @@ function Shop() {
           placeholder="Search Products..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-         className="
+          className="
 w-full
 h-14
 
@@ -72,11 +69,12 @@ mb-6
         {/* Filters */}
 
         <div className="flex gap-3 mb-6 overflow-x-auto pb-2 hide-scrollbar">
-          {["all", "essentials", "minimal", "statement", "together"].map((item) => (
-            <button
-              key={item}
-              onClick={() => setSelectedCollection(item)}
-              className={`
+          {["all", "essentials", "minimal", "statement", "together"].map(
+            (item) => (
+              <button
+                key={item}
+                onClick={() => setSelectedCollection(item)}
+                className={`
     whitespace-nowrap
     px-5
     py-2
@@ -91,10 +89,11 @@ mb-6
         : "bg-white"
     }
   `}
-            >
-              {item.toUpperCase()}
-            </button>
-          ))}
+              >
+                {item.toUpperCase()}
+              </button>
+            ),
+          )}
         </div>
 
         {/* Product Count */}
@@ -114,7 +113,11 @@ mb-6
             >
               <div className="overflow-hidden rounded-3xl">
                 <img
-                  src={imageMap[product.images?.[0]]}
+                  src={
+                    product.images?.[0]
+                      ? product.images[1]
+                      : "/heroo.png"
+                  }
                   alt={product.name}
                   className="
                     w-full

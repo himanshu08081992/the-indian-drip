@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
 
-import AnnouncementBar from "../components/AnnouncementBar/AnnouncementBar";
-import Navbar from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
+import AnnouncementBar from "../components/AnnouncementBar";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function MainLayout() {
   return (

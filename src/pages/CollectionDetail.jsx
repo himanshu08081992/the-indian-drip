@@ -2,7 +2,6 @@ import { useParams, Link } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import { getProducts } from "../services/productService";
-import { imageMap } from "../data/imageMap";
 function CollectionDetail() {
   const { id } = useParams();
   const [products, setProducts] = useState([]);
@@ -44,7 +43,7 @@ function CollectionDetail() {
             >
               <div className="overflow-hidden rounded-[24px]">
                 <img
-                  src={imageMap[product.images?.[0]?.trim()]}
+                  src={product.images?.[1] || "/heroo.png"}
                   alt={product.name}
                   className="
                     w-full

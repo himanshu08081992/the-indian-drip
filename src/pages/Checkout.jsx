@@ -54,18 +54,10 @@ function Checkout() {
 
           <Link
             to="/shop"
-            className="
-            inline-block
-            mt-6
-
-            bg-[#7A0C0C]
-            text-white
-
-            px-8
-            py-4
-
-            rounded-xl
-          "
+ className=" inline-block  mt-6 bg-[#7A0C0C]  text-white px-8
+py-4
+rounded-xl
+         "
           >
             Explore Products
           </Link>
@@ -227,11 +219,10 @@ function Checkout() {
                   value={formData.state}
                   readOnly
                   className="
-    border
-    border-gray-300
-    p-4
-    rounded-xl
-    bg-gray-50
+border border-gray-300
+p-4
+rounded-xl
+bg-gray-50
   "
                 />
               </div>
