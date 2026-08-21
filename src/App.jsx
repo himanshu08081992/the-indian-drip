@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ScrollToTop from "./components/ScrollToTop";
+// import ScrollToTop from "./components/ScrollToTop";
 
 import Loader from "./components/Loader";
 import Cursor from "./components/Cursor";
@@ -47,8 +47,7 @@ function App() {
     <>
       <Cursor />
       <BrowserRouter>
-        <ScrollToTop />
-
+        {/* <ScrollToTop /> */}
         <Routes>
           {/* Customer Layout */}
           <Route element={<MainLayout />}>

@@ -1,22 +1,19 @@
 import { Link } from "react-router-dom";
 
-const about1 =
-  "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b";
+const about1 = "/peaksF.jpg";
+const about2 = "/13.png";
 
-const about2 =
-  "https://images.unsplash.com/photo-1521572267360-ee0c2909d518";
 function AboutBrand() {
   return (
-    <section className="bg-[#F5EFE6] py-24">
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+    <section className="py-16 md:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
 
-          {/* LEFT */}
-
+          {/* LEFT CONTENT */}
           <div className="w-full lg:w-1/2">
 
-            <p className="uppercase tracking-[4px] text-[#7A0C0C] mb-4">
+            <p className="uppercase tracking-[4px] text-[#7A0C0C] mb-4 text-sm">
               About Us
             </p>
 
@@ -27,76 +24,81 @@ function AboutBrand() {
             <p className="mt-8 text-gray-700 leading-8">
               We are not just a clothing brand.
 
-              <br /><br />
+              <br />
+              <br />
 
               The Indian Drip is inspired by India’s mountains,
               streets, heritage and untold stories.
 
-              <br /><br />
+              <br />
+              <br />
 
               Every collection reflects a different side of
               Indian culture while keeping a modern streetwear
               identity.
 
-              <br /><br />
+              <br />
+              <br />
 
               Built in India. Designed for the streets.
             </p>
 
-          <Link  to="/OurStory">
-            <button
-              className="
-                mt-8
-
-                border
-                border-[#7A0C0C]
-
-                text-[#7A0C0C]
-
-                px-8
-                py-4
-
-                rounded-xl
-
-                hover:bg-[#7A0C0C]
-                hover:text-white
-
-                duration-300
-              "
-
-               
-            >
-              OUR STORY
-            </button>
-          </Link>
+            <Link to="/OurStory">
+              <button
+                className="
+                  mt-8
+                  border
+                  border-[#7A0C0C]
+                  text-[#7A0C0C]
+                  px-8
+                  py-4
+                  rounded-xl
+                  hover:bg-[#7A0C0C]
+                  hover:text-white
+                  duration-300
+                "
+              >
+                OUR STORY
+              </button>
+            </Link>
 
           </div>
 
-          {/* RIGHT */}
-
+          {/* RIGHT IMAGES */}
           <div className="w-full lg:w-1/2">
 
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-4 md:gap-6 items-start">
 
+              {/* IMAGE 1 */}
               <img
                 src={about1}
-                alt=""
+                alt="The Indian Drip streetwear"
                 className="
-                  h-[500px]
                   w-full
+                  h-[300px]
+                  sm:h-[380px]
+                  md:h-[450px]
+                  lg:h-[500px]
                   object-cover
                   rounded-[24px]
                 "
               />
 
+              {/* IMAGE 2 */}
               <img
                 src={about2}
-                alt=""
+                alt="The Indian Drip collection"
                 className="
-                  h-[500px]
                   w-full
+                  h-[260px]
+                  sm:h-[330px]
+                  md:h-[400px]
+                  lg:h-[450px]
                   object-cover
                   rounded-[24px]
+                  mt-10
+                  md:mt-14
+                  lg:mt-20
                 "
               />
 

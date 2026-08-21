@@ -157,7 +157,7 @@ function Footer() {
 
             <div className="space-y-4">
 
-              <a
+              <Link
                 href="https://instagram.com/theindiandrip"
                 target="_blank"
                 rel="noreferrer"
@@ -165,15 +165,15 @@ function Footer() {
               >
                 <FiInstagram />
                 Instagram
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="mailto:hello@theindiandrip.com"
                 className="flex items-center gap-3 text-gray-400 hover:text-[#7A0C0C] transition"
               >
                 <FiMail />
                 hello@theindiandrip.com
-              </a>
+              </Link>
 
             </div>
 
