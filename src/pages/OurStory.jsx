@@ -1,125 +1,227 @@
 function OurStory() {
   return (
-    <section className="bg-[#F5EFE6] min-h-screen">
+    <main className="bg-[#F5EFE6] text-[#171717] overflow-hidden">
 
       {/* HERO */}
+      <section className="min-h-[70vh] sm:min-h-[75vh] flex items-center">
+        <div className="max-w-7xl mx-auto w-full px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16 py-20 sm:py-24 md:py-28 lg:py-32">
 
-      <div className="max-w-[1400px] mx-auto px-6 py-24">
+          <p className="text-[11px] sm:text-xs tracking-[3px] sm:tracking-[4px] uppercase text-[#7A0C0C] mb-5 sm:mb-6">
+            Our Story
+          </p>
 
-        <div className="text-center">
-
-          <h1 className="text-5xl md:text-7xl font-semibold">
-            OUR STORY
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold tracking-tight leading-[0.95] max-w-5xl">
+            Born in India.
+            <br />
+            <span className="text-[#7A0C0C]">Made for the streets.</span>
           </h1>
 
-          <p className="mt-6 max-w-3xl mx-auto text-gray-600 text-lg">
-            The Indian Drip was born from a simple idea —
-            create streetwear that carries the spirit of India
-            while speaking the language of modern culture.
+          <p className="font-['Mukta'] text-lg sm:text-xl md:text-2xl text-gray-600 mt-6 sm:mt-8 max-w-2xl leading-8 sm:leading-9">
+            अपनी जड़ों से, अपने अंदाज़ तक।
+          </p>
+
+        </div>
+      </section>
+
+
+      {/* MAIN STORY IMAGE */}
+      <section className="px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
+        <div className="max-w-7xl mx-auto">
+          <div className="w-full overflow-hidden">
+            <img
+              src="/mainstory.png"
+              alt="The Indian Drip"
+              className="w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+
+      {/* STORY */}
+      <section className="py-16 sm:py-20 md:py-24 lg:py-28 border-t border-black/10">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10 lg:px-12">
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 md:gap-14 lg:gap-16 xl:gap-20">
+
+            <div className="lg:col-span-4">
+              <p className="text-[11px] sm:text-xs tracking-[3px] sm:tracking-[4px] uppercase text-[#7A0C0C]">
+                01 — The Beginning
+              </p>
+
+              <h2 className="font-['Mukta'] text-3xl sm:text-4xl md:text-5xl font-semibold mt-4 sm:mt-5 leading-tight">
+                जड़ों से जुड़े।
+              </h2>
+            </div>
+
+            <div className="lg:col-span-8">
+
+              <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-7 sm:leading-8 md:leading-9">
+                The Indian Drip started with a simple thought —
+                Indian identity deserves a place in modern streetwear.
+              </p>
+
+              <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-7 sm:leading-8 md:leading-9 mt-6 sm:mt-7">
+                India has always had its own colours, stories,
+                streets and expressions. We wanted to bring those
+                influences into clothing in a way that feels
+                contemporary, effortless and real.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* IMAGE + STORY */}
+      <section className="py-16 sm:py-20 md:py-24 lg:py-28 bg-white">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10 lg:px-12">
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 md:gap-14 lg:gap-16 xl:gap-20 items-center">
+
+            <div className="w-full overflow-hidden">
+              <img
+                src="/bharat.png"
+                alt="The Indian Drip - India"
+                className="w-full aspect-[4/5] sm:aspect-[4/5] md:aspect-[1/1] lg:aspect-[4/5] object-cover"
+              />
+            </div>
+
+            <div>
+
+              <p className="text-[11px] sm:text-xs tracking-[3px] sm:tracking-[4px] uppercase text-[#7A0C0C]">
+                02 — The Idea
+              </p>
+
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mt-4 sm:mt-5 leading-tight">
+                Streetwear with a story.
+              </h2>
+
+              <p className="text-gray-600 text-base sm:text-lg leading-7 sm:leading-8 mt-6 sm:mt-7">
+                We believe what you wear can say something about
+                where you come from and who you are.
+              </p>
+
+              <p className="text-gray-600 text-base sm:text-lg leading-7 sm:leading-8 mt-5">
+                Our collections take inspiration from India's
+                landscapes, culture, everyday life and street
+                energy — translated into a modern silhouette.
+              </p>
+
+              <div className="mt-7 sm:mt-8 border-l border-[#7A0C0C] pl-4 sm:pl-5">
+                <p className="font-['Mukta'] text-xl sm:text-2xl md:text-3xl font-semibold">
+                  अपनी पहचान।
+                  <br />
+                  अपना अंदाज़।
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* VALUES */}
+      <section className="py-16 sm:py-20 md:py-24 lg:py-28">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10 lg:px-12">
+
+          <div className="text-center max-w-2xl mx-auto">
+
+            <p className="text-[11px] sm:text-xs tracking-[3px] sm:tracking-[4px] uppercase text-[#7A0C0C]">
+              03 — What We Stand For
+            </p>
+
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mt-4 sm:mt-5">
+              More than just clothing.
+            </h2>
+
+          </div>
+
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-black/10 mt-10 sm:mt-12 md:mt-14">
+
+            <div className="bg-[#F5EFE6] p-6 sm:p-8 md:p-10">
+              <p className="text-xs sm:text-sm tracking-[2px] sm:tracking-[3px] uppercase text-gray-500">
+                01
+              </p>
+
+              <h3 className="font-['Mukta'] text-2xl sm:text-3xl font-semibold mt-5 sm:mt-6">
+                विरासत
+              </h3>
+
+              <p className="text-gray-600 leading-7 mt-3 sm:mt-4">
+                Inspired by the culture and stories that shape us.
+              </p>
+            </div>
+
+
+            <div className="bg-[#F5EFE6] p-6 sm:p-8 md:p-10">
+              <p className="text-xs sm:text-sm tracking-[2px] sm:tracking-[3px] uppercase text-gray-500">
+                02
+              </p>
+
+              <h3 className="font-['Mukta'] text-2xl sm:text-3xl font-semibold mt-5 sm:mt-6">
+                आज़ादी
+              </h3>
+
+              <p className="text-gray-600 leading-7 mt-3 sm:mt-4">
+                Designed for people who choose their own way.
+              </p>
+            </div>
+
+
+            <div className="bg-[#F5EFE6] p-6 sm:p-8 md:p-10 sm:col-span-2 lg:col-span-1">
+              <p className="text-xs sm:text-sm tracking-[2px] sm:tracking-[3px] uppercase text-gray-500">
+                03
+              </p>
+
+              <h3 className="font-['Mukta'] text-2xl sm:text-3xl font-semibold mt-5 sm:mt-6">
+                अंदाज़
+              </h3>
+
+              <p className="text-gray-600 leading-7 mt-3 sm:mt-4">
+                Modern silhouettes with an unmistakable Indian soul.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* FINAL */}
+      <section className="bg-[#171717] text-[#F5EFE6] py-20 sm:py-24 md:py-28 lg:py-32">
+
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 md:px-10 text-center">
+
+          <p className="text-[11px] sm:text-xs tracking-[3px] sm:tracking-[4px] uppercase text-gray-400">
+            The Indian Drip
+          </p>
+
+          <h2 className="font-['Mukta'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mt-6 sm:mt-7 leading-tight">
+            जहाँ जड़ें अपनी हों,
+            <br />
+            <span className="text-[#C7A15A]">
+              वहाँ अंदाज़ भी अपना होता है।
+            </span>
+          </h2>
+
+          <p className="text-gray-400 mt-6 sm:mt-8 text-sm sm:text-base md:text-lg">
+            Rooted in India. Built for the streets.
           </p>
 
         </div>
 
-      </div>
+      </section>
 
-      {/* STORY SECTION */}
-
-      <div className="max-w-[1200px] mx-auto px-6 py-10">
-
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-
-          <div>
-
-            <h2 className="text-4xl font-semibold mb-6">
-              Rooted In India
-            </h2>
-
-            <p className="text-gray-600 leading-8">
-              India has always been a land of stories,
-              traditions, colors and creativity.
-              We wanted to bring that heritage into
-              contemporary streetwear without making
-              it feel traditional or outdated.
-            </p>
-
-          </div>
-
-          <div>
-
-            <img
-              src="https://images.unsplash.com/photo-1514222709107-a180c68d72b4?auto=format&fit=crop&w=1200&q=80"
-              alt=""
-              className="
-                w-full
-                h-[500px]
-                object-cover
-                rounded-[32px]
-              "
-            />
-
-          </div>
-
-        </div>
-
-      </div>
-
-      {/* VISION */}
-
-      <div className="max-w-[1200px] mx-auto px-6 py-20">
-
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-
-          <div className="order-2 md:order-1">
-
-            <img
-              src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1200&q=80"
-              alt=""
-              className="
-                w-full
-                h-[500px]
-                object-cover
-                rounded-[32px]
-              "
-            />
-
-          </div>
-
-          <div className="order-1 md:order-2">
-
-            <h2 className="text-4xl font-semibold mb-6">
-              Built For The Streets
-            </h2>
-
-            <p className="text-gray-600 leading-8">
-              The Indian Drip is where heritage meets
-              street culture. Our pieces are designed
-              for creators, dreamers, explorers and
-              anyone proud of where they come from.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      {/* QUOTE */}
-
-      <div className="max-w-[1000px] mx-auto px-6 pb-24">
-
-        <div className="text-center">
-
-          <h2 className="text-4xl md:text-6xl font-semibold leading-tight">
-            Rooted In India.
-            <br />
-            Built For The Streets.
-          </h2>
-
-        </div>
-
-      </div>
-
-    </section>
+    </main>
   );
 }
 

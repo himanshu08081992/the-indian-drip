@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-const about1 = "/peaksF.jpg";
-const about2 = "/13.png";
+const about1 = "/TID.png";
+const about2 = "/bharat.png";
 
 function AboutBrand() {
   return (
@@ -11,58 +11,50 @@ function AboutBrand() {
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
 
           {/* LEFT CONTENT */}
-          <div className="w-full lg:w-1/2">
+      <div className="w-full lg:w-1/2">
 
-            <p className="uppercase tracking-[4px] text-[#7A0C0C] mb-4 text-sm">
-              About Us
-            </p>
+  <p className="font-['Mukta'] text-[#7A0C0C] mb-3 text-lg">
+    हमारी कहानी
+  </p>
 
-            <h2 className="text-4xl md:text-5xl font-semibold leading-tight">
-              WHY THE INDIAN DRIP?
-            </h2>
+  <h2 className="text-4xl md:text-5xl font-semibold leading-tight">
+    WHY THE INDIAN DRIP?
+  </h2>
 
-            <p className="mt-8 text-gray-700 leading-8">
-              We are not just a clothing brand.
+  <p className="font-['Mukta'] mt-3 text-xl text-gray-600">
+    अपनी जड़ों से, अपने अंदाज़ तक।
+  </p>
 
-              <br />
-              <br />
+  <p className="mt-8 text-gray-700 leading-8">
+    We are not just a clothing brand.
+    
+    <br />
+    <br />
 
-              The Indian Drip is inspired by India’s mountains,
-              streets, heritage and untold stories.
+    The Indian Drip is inspired by India’s mountains,
+    streets, heritage and the stories that shape us.
 
-              <br />
-              <br />
+    <br />
+    <br />
 
-              Every collection reflects a different side of
-              Indian culture while keeping a modern streetwear
-              identity.
+    हर collection भारत की एक अलग कहानी को
+    modern streetwear के अंदाज़ में पेश करता है।
 
-              <br />
-              <br />
+    <br />
+    <br />
 
-              Built in India. Designed for the streets.
-            </p>
+    Built in India.
+    <br />
+    Designed for the streets.
+  </p>
 
-            <Link to="/OurStory">
-              <button
-                className="
-                  mt-8
-                  border
-                  border-[#7A0C0C]
-                  text-[#7A0C0C]
-                  px-8
-                  py-4
-                  rounded-xl
-                  hover:bg-[#7A0C0C]
-                  hover:text-white
-                  duration-300
-                "
-              >
-                OUR STORY
-              </button>
-            </Link>
+  <Link to="/ourstory">
+    <button className="mt-8 border border-[#7A0C0C] text-[#7A0C0C] px-7 sm:px-8 py-3.5 sm:py-4 rounded-xl hover:bg-[#7A0C0C] hover:text-white duration-300">
+      OUR STORY
+    </button>
+  </Link>
 
-          </div>
+</div>
 
           {/* RIGHT IMAGES */}
           <div className="w-full lg:w-1/2">
