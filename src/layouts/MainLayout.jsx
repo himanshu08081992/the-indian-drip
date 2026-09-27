@@ -1,8 +1,12 @@
-import { Outlet } from "react-router-dom";
+import {
+  Outlet,
+  ScrollRestoration,
+} from "react-router-dom";
 
 import AnnouncementBar from "../components/AnnouncementBar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import ScrollManager from "../components/ScrollManager";
 
 function MainLayout() {
   return (
@@ -10,10 +14,9 @@ function MainLayout() {
       {/* <AnnouncementBar /> */}
 
       <Navbar />
-
       <Outlet />
-
       <Footer />
+         <ScrollManager />
     </>
   );
 }

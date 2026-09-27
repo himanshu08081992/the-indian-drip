@@ -1,5 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import ScrollToTop from "./components/ScrollToTop";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+import { useState } from "react";
 
 import Loader from "./components/Loader";
 import Cursor from "./components/Cursor";
@@ -28,12 +32,56 @@ import AdminOrders from "./pages/admin/AdminOrders";
 import AdminProducts from "./pages/admin/AdminProducts";
 import AddProduct from "./pages/admin/AddProduct";
 import EditProduct from "./pages/admin/EditProduct";
-import { useEffect, useState } from "react";
+
+const router = createBrowserRouter([
+  {
+    element: <MainLayout />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/shop", element: <Shop /> },
+      { path: "/collections", element: <CollectionsPage /> },
+      { path: "/collections/:id", element: <CollectionDetail /> },
+      { path: "/product/:id", element: <Product /> },
+      { path: "/cart", element: <Cart /> },
+      { path: "/login", element: <Login /> },
+      { path: "/signup", element: <Signup /> },
+      { path: "/checkout", element: <Checkout /> },
+      { path: "/order-success", element: <OrderSuccess /> },
+      { path: "/OurStory", element: <OurStory /> },
+      { path: "/contact", element: <Contact /> },
+    ],
+  },
+
+  {
+    path: "/admin/login",
+    element: <AdminLogin />,
+  },
+
+  {
+    element: (
+      <ProtectedRoute>
+        <AdminLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      { path: "/admin", element: <AdminDashboard /> },
+      { path: "/admin/products", element: <AdminProducts /> },
+      { path: "/admin/orders", element: <AdminOrders /> },
+      { path: "/admin/products/add", element: <AddProduct /> },
+      { path: "/admin/products/edit/:id", element: <EditProduct /> },
+    ],
+  },
+
+  {
+    path: "*",
+    element: <NotFound />,
+  },
+]);
 
 function App() {
-  const [loading, setLoading] = useState(() => {
-    return !sessionStorage.getItem("loaderShown");
-  });
+  const [loading, setLoading] = useState(
+    () => !sessionStorage.getItem("loaderShown")
+  );
 
   const handleLoaderFinish = () => {
     sessionStorage.setItem("loaderShown", "true");
@@ -43,49 +91,11 @@ function App() {
   if (loading) {
     return <Loader onFinish={handleLoaderFinish} />;
   }
+
   return (
     <>
       <Cursor />
-      <BrowserRouter>
-        {/* <ScrollToTop /> */}
-        <Routes>
-          {/* Customer Layout */}
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/collections" element={<CollectionsPage />} />
-            <Route path="/collections/:id" element={<CollectionDetail />} />
-            <Route path="/product/:id" element={<Product />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/order-success" element={<OrderSuccess />} />
-            <Route path="/OurStory" element={<OurStory />} />
-            <Route path="/contact" element={<Contact />} />
-          </Route>
-
-          {/* Admin Login */}
-          <Route path="/admin/login" element={<AdminLogin />} />
-
-          {/* Admin Layout */}
-          <Route
-            element={
-              <ProtectedRoute>
-                <AdminLayout />
-              </ProtectedRoute>
-            }
-          >
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/admin/products" element={<AdminProducts />} />
-            <Route path="/admin/orders" element={<AdminOrders />} />
-            <Route path="/admin/products/add" element={<AddProduct />} />
-            <Route path="/admin/products/edit/:id" element={<EditProduct />} />
-          </Route>
-
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </>
   );
 }

@@ -60,7 +60,7 @@ function FeaturedProducts() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 min-h-[500px]">
           {products.map((product) => (
             <Link
               key={product.id}

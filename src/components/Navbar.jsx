@@ -48,7 +48,7 @@ function Navbar() {
 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-500 border-b border-gray-200 "
     >
       <div className="max-w-[1500px] mx-auto px-5 sm:px-8 lg:px-12">
-        <div className="flex items-center justify-between h-[88px]">
+        <div className="flex items-center justify-between h-[70px]">
           {/* MOBILE MENU */}
 
           <div
