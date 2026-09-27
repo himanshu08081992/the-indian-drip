@@ -9,12 +9,12 @@ const slides = [
 ];
 
 function Hero() {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(0); 
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 15 Center में Shirt Mella, no, center में ठीक था, वो साले bard maridge design, John Lickry no design Upr Richard, kissi company, look, uscaning shortly, char second time, shell battling geling tervalh, kit far do you fix point two second naught place00);
+    }, 1500);
 
     return () => clearInterval(interval);
   }, []);
