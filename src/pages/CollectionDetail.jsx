@@ -19,9 +19,15 @@ function CollectionDetail() {
     fetchProducts();
   }, []);
 
-  const collectionProducts = products.filter(
-    (product) => product.collection === id,
-  );
+  const collectionProducts = products.filter((product) => {
+  if (id === "pod") {
+    return ["pod", "together"].includes(
+      (product.collection || "").toLowerCase()
+    );
+  }
+
+  return product.collection === id;
+});
 
   return (
     <section className="bg-[#F5EFE6] min-h-screen py-20">

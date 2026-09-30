@@ -153,7 +153,7 @@ function ProductForm({ initialData = null, onSave, isEdit = false }) {
             <option value="essentials">Essentials</option>
             <option value="minimal">Minimal</option>
             <option value="statement">Statement</option>
-            <option value="together">Together</option>
+            <option value="together">Print on demand</option>
           </select>
         </div>
 
